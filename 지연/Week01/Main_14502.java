@@ -37,7 +37,7 @@ public class Main_14502 {
 		result = 0;
 		for (int i = 0; i < N; i++) {
 			st = new StringTokenizer(br.readLine());
-			for (int j = 0; j < N; j++) {
+			for (int j = 0; j < M; j++) {
 				area[i][j] = Integer.parseInt(st.nextToken());
 				if (area[i][j] == 0) {
 					wall.add(new zero(i, j));
@@ -61,7 +61,7 @@ public class Main_14502 {
 			}
 			for (int a = 0; a < N; a++) {
 
-				for (int b = 0; b < N; b++) {
+				for (int b = 0; b < M; b++) {
 
 					if (temp_area[a][b] == 2) {
 						spread(a, b, temp_area);
@@ -84,7 +84,7 @@ public class Main_14502 {
 
 	public static void spread(int i, int j, int[][] temp_area) {
 		Queue<int[]> queue = new LinkedList<>();
-		boolean[][] visited = new boolean[N][N];
+		boolean[][] visited = new boolean[N][M];
 		queue.add(new int[] { i, j });
 		visited[i][j] = true;
 		while (!queue.isEmpty()) {
@@ -93,7 +93,7 @@ public class Main_14502 {
 			for (int d = 0; d < 4; d++) {
 				int nx = x + dx[d];
 				int ny = y + dy[d];
-				if (nx >= 0 && nx < N && ny >= 0 && ny < N && !visited[nx][ny] && temp_area[nx][ny] == 0) {
+				if (nx >= 0 && nx < N && ny >= 0 && ny < M && !visited[nx][ny] && temp_area[nx][ny] == 0) {
 					visited[nx][ny] = true;
 					temp_area[nx][ny] = 2;
 					queue.add(new int[] { nx, ny });
@@ -105,7 +105,7 @@ public class Main_14502 {
 	public static void count(int[][] temp_area) {
 		int count = 0;
 		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) {
+			for (int j = 0; j < M; j++) {
 				if (temp_area[i][j] == 0) {
 					count++;
 				}
