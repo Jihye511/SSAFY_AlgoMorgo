@@ -54,7 +54,10 @@ public class Main_14502 {
 	public static void dfs(int cnt, int start) {
 		if (cnt == 3) {
 
-			int[][] temp_area = deepCopy(area);
+			int[][] temp_area = new int[N][M];
+			for (int a = 0; a < N; a++) {
+				System.arraycopy(area[a], 0, temp_area[a], 0, M);
+			}
 			for (int i = 0; i < 3; i++) {
 				temp_area[wall.get(numbers[i]).x][wall.get(numbers[i]).y] = 1;
 
@@ -84,17 +87,17 @@ public class Main_14502 {
 
 	public static void spread(int i, int j, int[][] temp_area) {
 		Queue<int[]> queue = new LinkedList<>();
-		boolean[][] visited = new boolean[N][M];
+
 		queue.add(new int[] { i, j });
-		visited[i][j] = true;
+
 		while (!queue.isEmpty()) {
 			int pos[] = queue.poll();
 			int x = pos[0], y = pos[1];
 			for (int d = 0; d < 4; d++) {
 				int nx = x + dx[d];
 				int ny = y + dy[d];
-				if (nx >= 0 && nx < N && ny >= 0 && ny < M && !visited[nx][ny] && temp_area[nx][ny] == 0) {
-					visited[nx][ny] = true;
+				if (nx >= 0 && nx < N && ny >= 0 && ny < M && temp_area[nx][ny] == 0) {
+
 					temp_area[nx][ny] = 2;
 					queue.add(new int[] { nx, ny });
 				}
@@ -112,16 +115,6 @@ public class Main_14502 {
 			}
 		}
 		result = Math.max(result, count);
-	}
-
-	public static int[][] deepCopy(int[][] original) {
-		if (original == null)
-			return null;
-		int[][] copy = new int[original.length][];
-		for (int i = 0; i < original.length; i++) {
-			copy[i] = original[i].clone();
-		}
-		return copy;
 	}
 
 }
