@@ -66,6 +66,6 @@
 <details>
   <summary>2주차 - 5주차</summary>
 
-[프로그래머스 고득점kit 문제 정리본](https://www.notion.so/1b2aa43d3dea808db1a3fcafe261615f)
+[프로그래머스 고득점kit 문제 정리본](https://seasoned-peripheral-395.notion.site/1b2aa43d3dea808db1a3fcafe261615f?pvs=4)
 
 </details>
