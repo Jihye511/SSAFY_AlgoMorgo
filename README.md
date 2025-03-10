@@ -62,3 +62,10 @@
 |3/7|BOJ|14502 연구소|[문제 고](https://www.acmicpc.net/problem/14502)|
 
 </details>
+
+<details>
+  <summary>2주차 - 5주차</summary>
+
+[프로그래머스 고득점kit 문제 정리본](https://www.notion.so/1b2aa43d3dea808db1a3fcafe261615f)
+
+</details>
