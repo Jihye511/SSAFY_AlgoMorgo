@@ -59,6 +59,13 @@
 |날짜|---| 문제 |---|
 |---|---|---|---|
 |3/6|SWEA|1238 Contact|[문제 고](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15B1cKAKwCFAYD#none)|
-|3/7|SWEA||
+|3/7|BOJ|14502 연구소|[문제 고](https://www.acmicpc.net/problem/14502)|
+
+</details>
+
+<details>
+  <summary>2주차 - 5주차</summary>
+
+[프로그래머스 고득점kit 문제 정리본](https://seasoned-peripheral-395.notion.site/1b2aa43d3dea808db1a3fcafe261615f?pvs=4)
 
 </details>
