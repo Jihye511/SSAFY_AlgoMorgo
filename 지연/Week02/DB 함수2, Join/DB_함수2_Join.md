@@ -21,9 +21,9 @@
 
 ![image.png](image.png)
 
-![image.png](image%201.png)
+![image.png](image1.png)
 
-![image.png](image%202.png)
+![image.png](image2.png)
 
 - GROUPING함수
     - 실제 NULL값 또는 NULL값이 아닌 값
