@@ -1,0 +1,26 @@
+import java.util.*;
+class Solution {
+    public int solution(String[][] clothes) {
+        int answer = 1;
+        HashMap<String, Integer> hash = new HashMap<>();
+		        int num=0;
+		        for(int i=0;i<clothes.length;i++){
+		           
+		            if(hash.containsKey(clothes[i][1])){
+		            	num = hash.get(clothes[i][1])+1;
+		                hash.put(clothes[i][1],num);
+		            }
+		            else{
+		                num=2;
+		                 hash.put(clothes[i][1],num);
+		            }
+		       
+		        }
+		        
+        Set <String> KeySet = hash.keySet();
+     for(String key : KeySet){
+         answer*=hash.get(key);
+     }
+        return answer-1;
+    }
+}
