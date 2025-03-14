@@ -1,0 +1,51 @@
+import java.util.*;
+class Solution {
+    public int solution(String[][] clothes) {
+        int answer = 1;
+        HashMap<String, Integer> hash = new HashMap<>();
+		        int num=0;
+		        for(int i=0;i<clothes.length;i++){
+		           
+		            if(hash.containsKey(clothes[i][1])){
+		            	num = hash.get(clothes[i][1])+1;
+		                hash.put(clothes[i][1],num);
+		            }
+		            else{
+		                num=2;
+		                 hash.put(clothes[i][1],num);
+		            }
+		       
+		        }
+		        
+        Set <String> KeySet = hash.keySet();
+     for(String key : KeySet){
+         answer*=hash.get(key);
+     }
+        return answer-1;
+    }
+}
+
+
+
+/* 최적화  hash.getOrDefault 사용, hash.values() 사용
+import java.util.*;
+
+class Solution {
+    public int solution(String[][] clothes) {
+        HashMap<String, Integer> hash = new HashMap<>();
+        
+        // 의상 종류별 개수 저장
+        for (String[] cloth : clothes) {
+            hash.put(cloth[1], hash.getOrDefault(cloth[1], 1) + 1);
+        }
+        
+        // 모든 조합의 경우의 수 계산
+        int answer = 1;
+        for (int count : hash.values()) {
+            answer *= count;
+        }
+        
+        return answer - 1;
+    }
+}
+/*
