@@ -8,7 +8,7 @@
 - Model - 업무(Service)를 담당하는 모듈로 필요 시 DB 연동(DAO)
 - View - UI를 담당하는 모
 
-![image.png](https://file.notion.so/f/f/3e02843d-0237-4561-b673-4f7782f5d536/15710f81-15ce-4cfb-921a-1328e2d3a3fd/image.png?table=block&id=1bc604d1-c8f2-8022-8726-f75ef249c617&spaceId=3e02843d-0237-4561-b673-4f7782f5d536&expirationTimestamp=1742515200000&signature=6ImcvHk8o2yVGkZY-enzcVcjSo3eT_cXv9Cbfhu-0w4&downloadName=image.png)
+![image.png](attachment:15710f81-15ce-4cfb-921a-1328e2d3a3fd:image.png)
 
 ### *Model 1 방식 ( Controller+View ) (Model)
 
@@ -33,7 +33,7 @@
     - 개발 속도
     - 학습 곡선
 
-![image.png](https://file.notion.so/f/f/3e02843d-0237-4561-b673-4f7782f5d536/de09cc98-0e35-4c84-9f2e-76431d54df27/image.png?table=block&id=1bc604d1-c8f2-80d3-b9be-eceaca8968fd&spaceId=3e02843d-0237-4561-b673-4f7782f5d536&expirationTimestamp=1742515200000&signature=9atfMAn7RtFtCGWHQfD-VU1GxQhUwQE4T612-3AuRt8&downloadName=image.png)
+![image.png](attachment:de09cc98-0e35-4c84-9f2e-76431d54df27:image.png)
 
 ### 웹 컴포넌트 호출
 
@@ -59,6 +59,3 @@ dispatcher.forward(request, response); |
     - 의존성 관리
     - 빌드 자동화
 
----
-
-[보충](https://www.notion.so/1bc604d1c8f280129726f6d25882e1fa?pvs=21)
