@@ -79,5 +79,5 @@
 |날짜|---| 문제 |---|
 |---|---|---|---|
 |3/26|SWEA|7465. 창용 마을 무리의 개수|[문제 고](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWngfZVa9XwDFAQU)|
-|3/27|SWEA|||
+|3/27|SWEA|1251. [S/W 문제해결 응용] 4일차 - 하나로|[문제 고](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15StKqAQkCFAYD)|
 
