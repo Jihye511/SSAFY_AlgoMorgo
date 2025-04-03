@@ -3,46 +3,28 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main_1463 {
-	static int result;
+
+	static int[] memo;
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
-		result = Integer.MAX_VALUE;
-		recursive(N, 0);
-		System.out.println(result);
-	}
 
-	public static void recursive(int n, int cnt) {
-		int count = cnt;
-		if (n == 1) {
-			result = Math.min(result, count);
-			return;
-		}
-		if (n < 1) {
-			return;
-		}
+		memo = new int[N + 1];
 
-		count++;
-		if (result > count) {
+		memo[1] = 0;
 
-			if (n % 3 == 0) {
-				System.out.println("1    " + n / 3);
-				recursive(n / 3, count);
+		for (int i = 2; i <= N; i++) {
+			memo[i] = memo[i - 1] + 1;
+			if (i % 2 == 0) {
+				memo[i] = Math.min(memo[i], memo[i / 2] + 1);
 			}
-			if (n % 2 == 0) {
-				System.out.println("2    " + n / 2);
-				recursive(n / 2, count);
+			if (i % 3 == 0) {
+				memo[i] = Math.min(memo[i], memo[i / 3] + 1);
 			}
-			if (n > 2) {
-				System.out.println("3    " + (n - 1));
-				recursive(n - 1, count);
-			}
-
-		} else {
-			return;
 		}
+		System.out.println(memo[N]);
 
 	}
 
