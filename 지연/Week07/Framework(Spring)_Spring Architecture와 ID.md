@@ -22,23 +22,23 @@
 ### Spring의 빈 관리 과정
 ![image (6)](https://github.com/user-attachments/assets/b1ea0be9-a580-4319-8ad6-a540b7cd8107)
 
+1. 개발자는 POJO로 빈 작성
+   
 ![image (7)](https://github.com/user-attachments/assets/a5c360c1-390b-4146-9df8-3da097fd4363)
 
-1. 개발자는 POJO로 빈 작성
+2.  메타 정보(빈의 생성 방법 및 관 설정 정보)를 스프링 컨테이너에게 전달
 
 ![image (8)](https://github.com/user-attachments/assets/d3bff63a-e4af-4004-8022-faacb4c8006b)
 
 ![image (9)](https://github.com/user-attachments/assets/c1b00857-19c0-4522-b0bf-0ecd782ae740)
 
-2. 메타 정보(빈의 생성 방법 및 관 설정 정보)를 스프링 컨테이너에게 전달
-
+3. 런타임에 
+    - 스프링은 메타 정보를 보고 빈 객체 생성 → 싱글턴 형태로 관리
+    - 빈 관계에 정보에 따라 빈 주입 처리
 ![image (10)](https://github.com/user-attachments/assets/ecffdb6f-92b9-44d9-9375-4533a751d4f3)
 
 ![image (11)](https://github.com/user-attachments/assets/40607e80-5a6a-4d0e-b85b-ba7fb268aebf)
 
-3. 런타임에 
-    - 스프링은 메타 정보를 보고 빈 객체 생성 → 싱글턴 형태로 관리
-    - 빈 관계에 정보에 따라 빈 주입 처리
 
 ## ▶️ 명시적 DI
 
