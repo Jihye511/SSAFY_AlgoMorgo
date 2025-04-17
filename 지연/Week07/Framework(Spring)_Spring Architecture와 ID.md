@@ -98,4 +98,4 @@ public class WasherTest {
 
 ## ▶️ 빈의 생명 주기
 
-![image.png](attachment:cfe975c6-91b4-4c5b-9843-3b47e4a06cb7:image.png)
+![image (13)](https://github.com/user-attachments/assets/58390155-5f6d-44b4-8c75-efd374c35a0e)
