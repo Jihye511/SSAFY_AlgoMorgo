@@ -1,3 +1,4 @@
+// 프림
 import java.util.*;
 class Solution {
     static class Node implements Comparable<Node>{
@@ -50,3 +51,63 @@ class Solution {
         return answer;
     }
 }
+
+// 프림
+/*
+import java.util.*;
+class Solution {
+    static class Node implements Comparable<Node>{
+        int to, from, weight;
+        Node(int to, int from, int weight){
+            this.to = to;
+            this.from = from;
+            this.weight = weight;
+        }
+        
+        @Override
+        public int compareTo(Node node){
+            return this.weight - node.weight;
+        }
+    }
+    
+    static int[] parents;
+    public int solution(int n, int[][] costs) {
+        int answer = 0;
+        parents = new int[n];
+        for(int i = 0; i < n; i++){
+            parents[i] = i;
+        }
+        ArrayList<Node> nodes = new ArrayList<>();
+        for(int i = 0; i < costs.length; i++){
+            nodes.add(new Node(costs[i][0], costs[i][1], costs[i][2]));
+        }
+        
+        Collections.sort(nodes);
+        
+        int to, from, weight;
+        for(Node node : nodes){
+            to = node.to;
+            from = node.from;
+            if(find(to) != find(from)){
+                answer += node.weight;
+                union(to, from);
+            }
+        }
+        
+        
+        return answer;
+    }
+    
+    public void union(int v1, int v2){
+        int p1 = find(v1);
+        int p2 = find(v2);
+        if(p1 != p2) parents[p1] = p2;
+    }
+    
+    public int find(int n){
+        if(parents[n] == n) return n;
+        return find(parents[n]);
+    }
+}
+
+*/
