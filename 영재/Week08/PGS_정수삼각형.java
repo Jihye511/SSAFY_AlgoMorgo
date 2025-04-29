@@ -9,7 +9,6 @@ class PGS_정수삼각형 {
             for(int j=1;j<triangle[i].length-1;j++){
                 triangle[i][j]+=Math.max(triangle[i-1][j],triangle[i-1][j-1]);
                 
-               
                 if(i==triangle.length-1){
                     answer=Math.max(answer,triangle[i][j]);
                 }
