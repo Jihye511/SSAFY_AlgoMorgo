@@ -22,7 +22,7 @@ class Solution {
         visited[node] = true;
         
         for(int i = 0; i < n; i++){
-            if(visited[i] == false && computers[node][i] == 1){
+            if(!visited[i] && computers[node][i] == 1){
                 dfs(i, n,visited, computers);
             }
         }
