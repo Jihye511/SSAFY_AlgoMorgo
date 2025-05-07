@@ -168,4 +168,5 @@ const user = { name, age }; // 이것도 일종의 구조화(structuring)
 - Trap : target 객체의 property에 접근하기 위한 set/get등 메서드들로 내부 메서드와 연결됨
     - 관련 동작 재정의를 위한 확장 포인트
     
-    ![image.png](attachment:1b1662ec-1840-4427-8f19-7f28124fadad:image.png)
+    ![image](https://github.com/user-attachments/assets/c3935328-5712-4404-ba51-f62c7cde7bc9)
+
