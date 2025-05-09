@@ -46,13 +46,5 @@ answer=result;
         }
     }
     
-    public static boolean check(int length,String target,String[] words){
-        for(int i=0;i<length;i++){
-            if(words[i].equals(target)){
-                return true;
-            }
-        }
-        return false;
-    }
- 
+  
 }
