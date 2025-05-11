@@ -113,5 +113,3 @@ AI 모델과의 통신을 위한 API
 ### 동작 절차
 
 <img width="855" alt="image (3)" src="https://github.com/user-attachments/assets/2135fd05-c858-4ec1-b396-bf1b20a211a0" />
-
-![image.png](attachment:c51456a1-1fe5-44fd-81d9-cbac45a0bb69:image.png)
