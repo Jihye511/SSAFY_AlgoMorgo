@@ -1,6 +1,6 @@
 import java.util.*;
 
-class PGS_아이템줍기 {
+public class PGS_아이템줍기 {
     static int[][] map = new int[101][101];
     // 하, 좌, 상, 우
     static int[] dx = {1, 0, -1, 0};

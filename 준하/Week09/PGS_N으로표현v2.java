@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+public class PGS_N으로표현 {
     public int solution(int N, int number) {
         if (N == number) return 1;
         

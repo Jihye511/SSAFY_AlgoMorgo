@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class PGS_도둑질 {
     public int solution(int[] money) {
         int len = money.length - 1;
@@ -9,7 +7,7 @@ public class PGS_도둑질 {
         dp[0] = money[0];
         dp[1] = Math.max(money[0], money[1]);
         dp2[0] = money[1];
-        dp2[1] =  Math.max(money[1], money[2]);
+        dp2[1] = Math.max(money[1], money[2]);
         
         for (int i = 2; i < len; i++) {
             dp[i] = Math.max(dp[i-1], dp[i-2] + money[i]);

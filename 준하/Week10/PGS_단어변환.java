@@ -1,6 +1,6 @@
 import java.util.*;
 
-class PGS_단어변환 {
+public class PGS_단어변환 {
     static int idx = 0;
     static boolean flag = false;
     

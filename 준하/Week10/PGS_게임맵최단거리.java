@@ -1,6 +1,6 @@
 import java.util.*;
 
-class PGS_게임맵최단거리 {
+public class PGS_게임맵최단거리 {
     // 하, 좌, 상, 우
     static int[] dx = {1, 0, -1, 0};
     static int[] dy = {0, -1, 0, 1};
