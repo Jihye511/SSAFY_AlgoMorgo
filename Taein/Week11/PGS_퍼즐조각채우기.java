@@ -7,120 +7,119 @@ class Solution {
         Node(int x, int y){
             this.x = x;
             this.y = y;
-
         }
 
+        @Override
         public int compareTo(Node o){
-            int res = Integer.compare(this.x, o.x);
-            if(res==0){
-                res = Integer.compare(this.y, o.y);
-            }
-            return res;
+            if(o.x == this.x) return this.y - o.y;
+            return this.x - o.x;
         }
 
     }
 
-    static int[] dx = {-1, 1, 0, 0};
-    static int[] dy = {0, 0, -1, 1};
+    static int[] dx = {1, -1, 0, 0};
+    static int[] dy = {0, 0, 1, -1};
+    static List<List<Node>> board_list;
+    static List<List<Node>> table_list;
+    static int answer = 0;
     static int len;
-    static List<List<Node>> main_board;
-    static List<List<Node>> block_board;
-
     public static void main(String[] args) throws Exception {
         int[][] game_board = {{1,1,0,0,1,0},{0,0,1,0,1,0},{0,1,1,0,0,1},{1,1,0,1,1,1},{1,0,0,0,1,0},{0,1,1,1,0,0}};
         int[][] table = {{1,0,0,1,1,0},{1,0,1,0,1,0},{0,1,1,0,1,1},{0,0,1,0,0,0},{1,1,0,1,1,0},{0,1,0,0,0,0}};
+        board_list = new ArrayList<>();
+        table_list = new ArrayList<>();
         len = game_board.length;
-        main_board = new ArrayList<>();
-        block_board = new ArrayList<>();
 
-        boolean[][] main_visited = new boolean[len][len];
-        boolean[][] block_visited = new boolean[len][len];
+        boolean[][] board_visited = new boolean[len][len];
+        boolean[][] table_visited = new boolean[len][len];
 
         for(int i = 0; i < len; i++){
             for(int j = 0; j < len; j++){
-                if(!main_visited[i][j] && game_board[i][j] == 0){
-                    bfs(i, j, game_board, main_board);
+                if(!board_visited[i][j] && game_board[i][j] == 0){
+                    bfs(i, j, board_visited, game_board, board_list);
                 }
-                if(!block_visited[i][j] && game_board[i][j] == 0){
-                    bfs(i, j, table, block_board);
+                if(!table_visited[i][j] && table[i][j] == 1){
+                    bfs(i, j, table_visited, table, table_list);
                 }
             }
         }
 
-        int result = check_block(main_board, block_board);
-        System.out.println(result);
+        answer = compare(board_list, table_list);
+
+        System.out.println(answer);
     }
 
-    static int check_block(List<List<Node>> main, List<List<Node>> block){
+    static public int compare(List<List<Node>> board, List<List<Node>> table){
+        int board_size = board.size();
+        int table_size = table.size();
         int result = 0;
-        int main_size = main_board.size();
-        int block_size = block_board.size();
 
-        boolean[] visited = new boolean[block_size];
+        boolean[] visited = new boolean[board.size()];
 
-        for(int i = 0; i < block_size; i ++){
-            for(int j = 0; j < main_size; j++){
-                if(visited[j] || main.get(i).size()!=block.get(j).size()) continue;
-                if(rotate(block.get(i), main.get(j))){
+        for(int i = 0; i < table_size; i++){
+            for(int j = 0; j < board_size; j++){
+                if(visited[j] || board.get(j).size() != table.get(i).size()) continue;
+                if(rotate(board.get(j), table.get(i))){
                     visited[j] = true;
-                    result += main.get(j).size();
+                    result += board.get(j).size();
                     break;
                 }
             }
         }
-
         return result;
-
     }
 
-    static boolean rotate(List<Node> block, List<Node> main){
-        Collections.sort(main);
+    static public boolean rotate(List<Node> board, List<Node> rotate){
+        Collections.sort(board);
 
-        for(int i=0; i<4; i++){
+        List<Node> table = new ArrayList<>();
+        for(Node node : rotate){
+            table.add(new Node(node.x, node.y));
+        }
 
-            Collections.sort(block);
+        int cur_x, cur_y, temp;
+        boolean check;
+        for(int d = 0; d < 4; d++){
+            Collections.sort(table);
+            cur_x = table.get(0).x;
+            cur_y = table.get(0).y;
 
-            int curr_x = block.get(0).x;
-            int curr_y = block.get(0).y;
-
-            for(int j=0; j<block.size(); j++){
-                block.get(j).x -= curr_x;
-                block.get(j).y -= curr_y;
+            for(Node node : table){
+                node.x -= cur_x;
+                node.y -= cur_y;
             }
 
-            boolean check = true;
-            for(int j=0; j< main.size(); j++){
-                if(main.get(j).x != block.get(j).x || main.get(j).y != block.get(j).y){
+            check = true;
+            for(int i = 0; i < board.size(); i++){
+                if(board.get(i).x != table.get(i).x || board.get(i).y != table.get(i).y){
                     check = false;
                     break;
                 }
             }
 
-            if(check){
-                return true;
-            }
+            if(check) return true;
             else{
-                for(int j=0; j<block.size(); j++){
-                    int temp = block.get(j).x;
-                    block.get(j).x = block.get(j).y;
-                    block.get(j).y = -temp;
+                for(int i = 0; i < table.size(); i++){
+                    temp = table.get(i).x;
+                    table.get(i).x = table.get(i).y;
+                    table.get(i).y = -temp;
+
                 }
             }
+
+
         }
-
         return false;
-
-
     }
 
-    static void bfs(int x, int y, int[][] map, List<List<Node>> list){
+
+    static public void bfs(int x, int y, boolean[][] visited, int[][] map, List<List<Node>> main_list){
         Queue<Node> q = new ArrayDeque();
         List<Node> temp_list = new ArrayList<>();
-        boolean[][] visited = new boolean[len][len];
 
-        visited[x][y] = true;
-        q.add(new Node(x,y));
+        q.add(new Node(x, y));
         temp_list.add(new Node(0,0));
+        visited[x][y] = true;
 
         int nx, ny;
         Node temp;
@@ -130,17 +129,16 @@ class Solution {
                 nx = temp.x + dx[d];
                 ny = temp.y + dy[d];
                 if(nx < 0 || nx >= len || ny < 0 || ny >= len || visited[nx][ny]) continue;
-                if(map[nx][ny] == 0){
+                if(map[nx][ny] == 1){
                     q.add(new Node(nx, ny));
-                    visited[nx][ny] = true;
                     temp_list.add(new Node(nx - x, ny - y));
+                    visited[nx][ny] = true;
                 }
-
-
             }
         }
-
-        list.add(temp_list);
+        main_list.add(temp_list);
     }
+
+
 
 }
