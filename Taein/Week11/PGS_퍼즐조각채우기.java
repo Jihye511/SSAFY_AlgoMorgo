@@ -1,6 +1,4 @@
-// 못풀었지만 일단 올리겠습니다
 import java.util.*;
-
 class Solution {
     static class Node implements Comparable<Node>{
         int x, y;
@@ -8,28 +6,33 @@ class Solution {
             this.x = x;
             this.y = y;
         }
-
+        
         @Override
         public int compareTo(Node o){
             if(o.x == this.x) return this.y - o.y;
             return this.x - o.x;
         }
-
+        
     }
-
+    
     static int[] dx = {1, -1, 0, 0};
     static int[] dy = {0, 0, 1, -1};
     static List<List<Node>> board_list;
     static List<List<Node>> table_list;
     static int answer = 0;
     static int len;
-    public static void main(String[] args) throws Exception {
-        int[][] game_board = {{1,1,0,0,1,0},{0,0,1,0,1,0},{0,1,1,0,0,1},{1,1,0,1,1,1},{1,0,0,0,1,0},{0,1,1,1,0,0}};
-        int[][] table = {{1,0,0,1,1,0},{1,0,1,0,1,0},{0,1,1,0,1,1},{0,0,1,0,0,0},{1,1,0,1,1,0},{0,1,0,0,0,0}};
+    public int solution(int[][] game_board, int[][] table) {
         board_list = new ArrayList<>();
         table_list = new ArrayList<>();
         len = game_board.length;
-
+        
+        for(int i =0; i < len; i++) {
+        	for(int j = 0; j < len; j++) {
+        		if(table[i][j] == 1) table[i][j] = 0;
+        		else table[i][j] = 1;
+        	}
+        }
+        
         boolean[][] board_visited = new boolean[len][len];
         boolean[][] table_visited = new boolean[len][len];
 
@@ -38,7 +41,7 @@ class Solution {
                 if(!board_visited[i][j] && game_board[i][j] == 0){
                     bfs(i, j, board_visited, game_board, board_list);
                 }
-                if(!table_visited[i][j] && table[i][j] == 1){
+                if(!table_visited[i][j] && table[i][j] == 0){
                     bfs(i, j, table_visited, table, table_list);
                 }
             }
@@ -46,7 +49,7 @@ class Solution {
 
         answer = compare(board_list, table_list);
 
-        System.out.println(answer);
+        return answer;
     }
 
     static public int compare(List<List<Node>> board, List<List<Node>> table){
@@ -129,7 +132,7 @@ class Solution {
                 nx = temp.x + dx[d];
                 ny = temp.y + dy[d];
                 if(nx < 0 || nx >= len || ny < 0 || ny >= len || visited[nx][ny]) continue;
-                if(map[nx][ny] == 1){
+                if(map[nx][ny] == 0){
                     q.add(new Node(nx, ny));
                     temp_list.add(new Node(nx - x, ny - y));
                     visited[nx][ny] = true;
